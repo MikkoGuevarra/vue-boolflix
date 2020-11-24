@@ -23,9 +23,7 @@ var app =  new Vue ({
                    movie.vote_average = Math.round (movie.vote_average / 2);
                 });
 
-
-
             });
-        }       
+        }
     }
 });
