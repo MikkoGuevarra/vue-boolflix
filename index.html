@@ -18,7 +18,12 @@
                 <div class="movie" v-for="movie in movies">
                     <h2>{{movie.title}}</h2>
                     <p>{{movie.original_title}}</p>
-                    <p>{{movie.original_language}}</p>
+                    <p>
+                        <span>{{movie.original_language}} </span>
+                        <span>
+                            <img class="flags" :src="currentLang" alt="">
+                        </span>
+                    </p>
                     <p>{{movie.vote_average}}</p>
                 </div>
             </div>

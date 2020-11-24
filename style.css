@@ -57,3 +57,7 @@
 .movie p {
     padding: 5px 0;
 }
+ .flags {
+     width: 20px;
+     height: 20px;
+ }
