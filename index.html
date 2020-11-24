@@ -10,16 +10,17 @@
     <body>
         <div  id="root" class="container">
             <div class="search-box">
-                <input type="search">
+                <input type="search" v-model="searchInput" placeholder="Search any movie">
                 <button type="button">Search</button>
 
             </div>
             <div class="movie-container">
-                <p>Title</p>
-                <p>Original Title</p>
-                <p>Original Language</p>
-                <p>Ratings</p>
-
+                <div class="movie">
+                    <h2>Title</h2>
+                    <p>Original Title</p>
+                    <p>Original Language</p>
+                    <p>Ratings</p>
+                </div>
             </div>
 
         </div>
