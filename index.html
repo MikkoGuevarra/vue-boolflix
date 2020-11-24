@@ -20,7 +20,8 @@
                     <h2>{{movie.title}}</h2>
                     <p>{{movie.original_title}}</p>
                     <p>
-                        <img class="flags" :src="movie.original_language" alt="">
+                        <!-- <img class="flags" :src="movie.original_language" alt=""> -->
+                        <img class="flags" :src="'flags/' + movie.original_language + '.png'" :alt="movie.original_language">
                     </p>
                     <p>
                         <span>{{movie.vote_average}}</span>

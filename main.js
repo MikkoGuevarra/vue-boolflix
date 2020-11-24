@@ -2,6 +2,7 @@ var app =  new Vue ({
     el: '#root',
     data: {
         searchInput: '',
+        flag: '',
         movies: [],
     },
     methods: {
@@ -14,22 +15,13 @@ var app =  new Vue ({
                 }
             }).then(result => {
                 this.movies = result.data.results;
-                console.log(this.movies);
+                // console.log(this.movies);
+
+
 
                 this.movies.forEach((movie) => {
-                    if (movie.original_language == 'it') {
-                       movie.original_language = 'flags/italy.png'
-                   } else if (movie.original_language == 'en') {
-                       movie.original_language = 'flags/eng.png'
-                   } else if (movie.original_language == 'fr') {
-                       movie.original_language = 'flags/fra.png'
-                   } else if (movie.original_language == 'de') {
-                       movie.original_language = 'flags/germ.png'
-                   } else if (movie.original_language == 'es') {
-                       movie.original_language =  'flags/spain.png'
-                   } else {
-                       movie.original_language = 'flags/world.png'
-                   }
+                   movie.vote_average = Math.round (movie.vote_average / 2)
+
 
                 });
 
