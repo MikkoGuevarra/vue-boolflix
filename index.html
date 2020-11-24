@@ -10,16 +10,16 @@
     <body>
         <div  id="root" class="container">
             <div class="search-box">
-                <input type="search" v-model="searchInput" placeholder="Search any movie">
-                <button type="button">Search</button>
+                <input type="search" v-model="searchInput" @keyUp.enter="btnEnter()" placeholder="Search any movie">
+                <button type="button" @click="btnEnter()">Search</button>
 
             </div>
             <div class="movie-container">
-                <div class="movie">
-                    <h2>Title</h2>
-                    <p>Original Title</p>
-                    <p>Original Language</p>
-                    <p>Ratings</p>
+                <div class="movie" v-for="movie in movies">
+                    <h2>{{movie.title}}</h2>
+                    <p>{{movie.original_title}}</p>
+                    <p>{{movie.original_language}}</p>
+                    <p>{{movie.vote_average}}</p>
                 </div>
             </div>
 
