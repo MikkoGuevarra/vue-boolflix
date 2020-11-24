@@ -2,8 +2,8 @@ var app =  new Vue ({
     el: '#root',
     data: {
         searchInput: '',
-        flag: '',
         movies: [],
+        totStars: 5
     },
     methods: {
         btnEnter() {
@@ -20,13 +20,12 @@ var app =  new Vue ({
 
 
                 this.movies.forEach((movie) => {
-                   movie.vote_average = Math.round (movie.vote_average / 2)
-
-
+                   movie.vote_average = Math.round (movie.vote_average / 2);
                 });
 
-            });
-        }
 
+
+            });
+        }       
     }
 });
