@@ -3,7 +3,6 @@ var app =  new Vue ({
     data: {
         searchInput: '',
         movies: [],
-        currentLang:''
     },
     methods: {
         btnEnter() {
@@ -15,50 +14,27 @@ var app =  new Vue ({
                 }
             }).then(result => {
                 this.movies = result.data.results;
-                // console.log(this.movies);
-                this.movies.forEach((item, i) => {
-                    this.flag()
+                console.log(this.movies);
+
+                this.movies.forEach((movie) => {
+                    if (movie.original_language == 'it') {
+                       movie.original_language = 'flags/italy.png'
+                   } else if (movie.original_language == 'en') {
+                       movie.original_language = 'flags/eng.png'
+                   } else if (movie.original_language == 'fr') {
+                       movie.original_language = 'flags/fra.png'
+                   } else if (movie.original_language == 'de') {
+                       movie.original_language = 'flags/germ.png'
+                   } else if (movie.original_language == 'es') {
+                       movie.original_language =  'flags/spain.png'
+                   } else {
+                       movie.original_language = 'flags/world.png'
+                   }
+
                 });
 
             });
-        },
-        flag() {
-            this.movies.forEach((movie) => {
-                // console.log(movie.original_language);
-                // switch (movie.original_language) {
-                //     case 'it':
-                //         this.currentLang = 'flags/italy.png'
-                //         break;
-                //     case 'en':
-                //         this.currentLang = 'flags/eng.png'
-                //         break;
-                //     case 'fr':
-                //         this.currentLang = 'flags/fra.png'
-                //         break;
-                //     case 'de':
-                //         this.currentLang = 'flags/germ.png'
-                //         break;
-                //     case 'es':
-                //         this.currentLang = 'flags/spain.png'
-                //         break;
-                //     default:
-                //         break;
-                //
-                // }
-                if (movie.original_language == 'it') {
-                    this.currentLang = 'flags/italy.png'
-                } else if (movie.original_language == 'en') {
-                    this.currentLang = 'flags/eng.png'
-                } else if (movie.original_language == 'fr') {
-                    this.currentLang = 'flags/fra.png'
-                } else if (movie.original_language == 'de') {
-                    this.currentLang = 'flags/germ.png'
-                } else if (movie.original_language == 'es') {
-                    this.currentLang =  'flags/spain.png'
-
-                }
-
-            });
         }
+
     }
 });
