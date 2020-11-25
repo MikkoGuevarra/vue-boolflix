@@ -28,6 +28,14 @@ header {
     margin-bottom: 30px;
 }
 
+h3 {
+    margin-bottom: 10px;
+}
+
+p {
+    padding: 5px 0;
+}
+
  /* +++++LOGO PART+++++ */
 
  .logo, .search-box {
@@ -79,25 +87,45 @@ header {
     flex-grow: 0;
     flex-shrink: 0;
     height: 400px;
-    padding: 50px 10px;
+    /* padding: 50px 10px; */
     margin: 10px 10px;
     border-radius: 15px;
     border: 1px solid white;
+    position: relative;
 }
 
-.movie h3 {
-    margin-bottom: 10px;
+.flags {
+ width: 20px;
+ height: 20px;
 }
 
-.movie p {
-    padding: 5px 0;
+.colored {
+ color: gold;
+ border-color: black;
 }
- .flags {
-     width: 20px;
-     height: 20px;
- }
 
- .colored {
-     color: gold;
-     border-color: black;
- }
+.cover {
+ width: 100%;
+ height: 100%;
+}
+
+.img-cover {
+ height: 100%;
+ width: 100%;
+ border-radius: 15px;
+ /* position: absolute;
+ z-index: 0;
+ opacity: 50%;
+ top: 0;
+ left: 0; */
+}
+
+.description {
+    position: absolute;
+    top: 20px;
+    left: 20px;;
+}
+
+.series h2 {
+    margin-top: 20px;
+}

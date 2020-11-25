@@ -15,7 +15,7 @@
                     <h1>BOOLFLIX</h1>
                 </div>
                 <div class="search-box">
-                    <input type="search" v-model="searchInput" @keyUp.enter="btnEnter()" placeholder="Search any movie">
+                    <input type="search" v-model="searchInput" @keyUp.enter="btnEnter()" placeholder="Search any movie or show">
                     <button type="button" @click="btnEnter()">Search</button>
                 </div>
 
@@ -24,18 +24,23 @@
                 <h2>Movies</h2>
                 <div class="movie-container">
                     <div class="movie" v-for="movie in movies">
-                        <h3>{{movie.title}}</h3>
-                        <p>{{movie.original_title}}</p>
-                        <p>
-                            <img class="flags" :src="'flags/' + movie.original_language + '.png'" :alt="movie.original_language">
-                        </p>
-                        <p>
-                            <span>{{movie.vote_average}}</span>
-                            <span>
-                                <i  v-for="star in  movie.vote_average" class="fas fa-star colored"></i>
-                                <i v-for="i in (totStars - movie.vote_average )" class="far fa-star"></i>
-                            </span>
-                        </p>
+                        <div class="cover">
+                            <img class="img-cover" src="https://cdn.vox-cdn.com/thumbor/NpKOdQxdJD8OpkLfH8oaxFJtD00=/39x0:3111x2048/1400x788/filters:focal(39x0:3111x2048):format(png)/cdn.vox-cdn.com/uploads/chorus_image/image/49901753/netflixlogo.0.0.png" alt="">
+                        </div>
+                        <div class="description">
+                            <h3>{{movie.title}}</h3>
+                            <p>{{movie.original_title}}</p>
+                            <p>
+                                <img class="flags" :src="'flags/' + movie.original_language + '.png'" :alt="movie.original_language">
+                            </p>
+                            <p>
+                                <span>{{movie.vote_average}}</span>
+                                <span>
+                                    <i  v-for="star in  movie.vote_average" class="fas fa-star colored"></i>
+                                    <i v-for="i in (totStars - movie.vote_average )" class="far fa-star"></i>
+                                </span>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -43,19 +48,24 @@
                 <h2>Tv Shows</h2>
                 <div class="show-container">
                     <div class="shows" v-for="show in shows">
-                        <h3>{{show.name}}</h3>
-                        <p>{{show.original_name}}</p>
-                        <p>
-                            <span>{{show.original_language}}</span>
-                            <img class="flags" :src="'flags/' + show.original_language + '.png'" :alt="show.original_language">
-                        </p>
-                        <p>
-                            <span>{{show.vote_average}}</span>
-                            <span>
-                                <i  v-for="star in  show.vote_average" class="fas fa-star colored"></i>
-                                <i v-for="i in (totStars - show.vote_average )" class="far fa-star"></i>
-                            </span>
-                        </p>
+                        <div class="cover">
+                            <img class="img-cover" src="https://cdn.vox-cdn.com/thumbor/NpKOdQxdJD8OpkLfH8oaxFJtD00=/39x0:3111x2048/1400x788/filters:focal(39x0:3111x2048):format(png)/cdn.vox-cdn.com/uploads/chorus_image/image/49901753/netflixlogo.0.0.png" alt="">
+                        </div>
+                        <div class="description">
+                            <h3>{{show.name}}</h3>
+                            <p>{{show.original_name}}</p>
+                            <p>
+                                <span>{{show.original_language}}</span>
+                                <img class="flags" :src="'flags/' + show.original_language + '.png'" :alt="show.original_language">
+                            </p>
+                            <p>
+                                <span>{{show.vote_average}}</span>
+                                <span>
+                                    <i  v-for="star in  show.vote_average" class="fas fa-star colored"></i>
+                                    <i v-for="i in (totStars - show.vote_average )" class="far fa-star"></i>
+                                </span>
+                            </p>
+                        </div>
                     </div>
                 </div>
 
