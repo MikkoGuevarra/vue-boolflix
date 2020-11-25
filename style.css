@@ -4,6 +4,24 @@
     padding: 0;
 }
 
+* {
+  scrollbar-width: thin;
+  scrollbar-color: black;
+}
+
+/* Works on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+}
+*::-webkit-scrollbar-track {
+  background: #232427;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: black;
+  border-radius: 20px;
+  border: 1px solid white;
+}
+
 body {
     background-color: #232427;
     color: white;

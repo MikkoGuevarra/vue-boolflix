@@ -23,7 +23,6 @@ var app =  new Vue ({
                     this.movies.forEach((movie) => {
                         movie.vote_average = Math.round (movie.vote_average / 2);
                         // console.log(movie.poster_path);
-                        console.log(this.getImg(movie.poster_path));
                     });
 
                 });
