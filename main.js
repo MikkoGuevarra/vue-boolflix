@@ -22,6 +22,8 @@ var app =  new Vue ({
 
                     this.movies.forEach((movie) => {
                         movie.vote_average = Math.round (movie.vote_average / 2);
+                        // console.log(movie.poster_path);
+                        console.log(this.getImg(movie.poster_path));
                     });
 
                 });
@@ -43,7 +45,16 @@ var app =  new Vue ({
                 });
                 this.searchInput= "";
             }
+        },
+        getImg(path) {
 
+            if (path == null) {
+                return url = 'flags/ntflx.jpg';
+            } else {
+                return url = 'https://image.tmdb.org/t/p/' + 'w342' + path;
+            }
+
+            // return url;
         }
     }
 });
