@@ -46,14 +46,13 @@ var app =  new Vue ({
             }
         },
         getImg(path) {
-
-            if (path == null) {
-                return url = 'flags/ntflx.jpg';
-            } else {
-                return url = 'https://image.tmdb.org/t/p/' + 'w342' + path;
+            let url = 'flags/ntflx.jpg';
+            if (path != null) {
+                 // url = 'flags/ntflx.jpg';
+                 url = 'https://image.tmdb.org/t/p/' + 'w342' + path;
             }
 
-            // return url;
+            return url;
         }
     }
 });

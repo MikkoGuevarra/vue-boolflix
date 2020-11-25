@@ -25,6 +25,7 @@
 body {
     background-color: #232427;
     color: white;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 h1 {
@@ -66,6 +67,10 @@ p {
      align-items: center;
  }
 
+ .logo img {
+     margin-left: 20px;
+ }
+
 /* ++++SEARCH-BOX+++++ */
 
 .search-box {
@@ -79,14 +84,15 @@ p {
     padding: 10px;
     border-radius: 15px;
     border-width: 1px;
+    font-size: 16px;
 }
 
 .search-box input {
     width: 300px;
-    font-size: 16px;
 }
 
 .search-box button {
+    margin-left: 10px;
     cursor: pointer;
 }
 
