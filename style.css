@@ -137,19 +137,23 @@ p {
  height: 100%;
  width: 100%;
  border-radius: 15px;
- /* position: absolute;
- z-index: 0;
- opacity: 50%;
- top: 0;
- left: 0; */
 }
 
 .description {
     position: absolute;
     top: 20px;
-    left: 20px;;
+    left: 20px;
+    display: none;
 }
 
 .series h2 {
     margin-top: 20px;
+}
+
+.movie:hover .img-cover, .shows:hover .img-cover {
+    opacity: 30%;
+}
+
+.movie:hover .description, .shows:hover .description {
+    display: block;
 }

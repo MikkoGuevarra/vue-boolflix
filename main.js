@@ -3,7 +3,8 @@ var app =  new Vue ({
     data: {
         searchInput: '',
         movies: [],
-        shows:[],
+        shows: [],
+        availableFlags: ['de', 'en', 'es', 'fr', 'it', 'ja'],
         totStars: 5
     },
     methods: {
@@ -17,14 +18,6 @@ var app =  new Vue ({
                 }).then(result => {
                     this.movies = result.data.results;
                     console.log(this.movies);
-
-
-
-                    this.movies.forEach((movie) => {
-                        movie.vote_average = Math.round (movie.vote_average / 2);
-                        // console.log(movie.poster_path);
-                    });
-
                 });
 
                 axios.get('https://api.themoviedb.org/3/search/tv', {
@@ -34,13 +27,6 @@ var app =  new Vue ({
                     }
                 }).then(result => {
                     this.shows = result.data.results;
-                    // console.log(this.movies);
-                    // console.log(this.shows);
-
-                    this.shows.forEach((show) => {
-                        show.vote_average = Math.round (show.vote_average / 2);
-                    });
-
                 });
                 this.searchInput= "";
             }
@@ -53,6 +39,9 @@ var app =  new Vue ({
             }
 
             return url;
+        },
+        getStars(vote) {
+            return Math.round (vote / 2);
         }
     }
 });
