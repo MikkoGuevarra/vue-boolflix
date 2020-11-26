@@ -55,6 +55,10 @@ p {
     padding: 5px 0;
 }
 
+h5 {
+    margin-top: 10px;
+}
+
  /* +++++LOGO PART+++++ */
 
  .logo, .search-box {
@@ -116,6 +120,7 @@ p {
     border-radius: 15px;
     border: 1px solid white;
     position: relative;
+    overflow: auto;
 }
 
 .flags {

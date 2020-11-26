@@ -20,7 +20,7 @@ var app =  new Vue ({
                     }
                 }).then(result => {
                     this.movies = result.data.results;
-                    // console.log(this.movies);
+                    console.log(this.movies);
                 });
 
                 axios.get('https://api.themoviedb.org/3/search/tv', {
@@ -55,7 +55,7 @@ var app =  new Vue ({
             }
         }).then(result => {
             this.movieTrending = result.data.results;
-            // console.log(this.movieTrending);
+            console.log(this.movieTrending);
         });
 
         axios.get('https://api.themoviedb.org/3/trending/tv/week', {
@@ -64,7 +64,7 @@ var app =  new Vue ({
             }
         }).then(result => {
             this.showTrending = result.data.results;
-            console.log(this.showTrending);
+            // console.log(this.showTrending);
         });
 
     }
