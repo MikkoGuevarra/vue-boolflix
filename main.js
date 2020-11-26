@@ -7,8 +7,7 @@ var app =  new Vue ({
         availableFlags: ['de', 'en', 'es', 'fr', 'it', 'ja'],
         totStars: 5,
         movieTrending: [],
-        showTrending: [],
-        casts: []
+        showTrending: []
     },
     methods: {
         btnEnter() {
@@ -29,12 +28,11 @@ var app =  new Vue ({
                                 api_key: 'c3629f71ee7deef7be9c4792c3632882'
                             }
                         }).then(rex => {
-                            this.casts = rex.data.cast.slice(0, 5)
-                            console.log(this.casts);
+                            movie['cast'] = rex.data.cast.slice(0, 5)
                         });
 
                     });
-
+                    console.log(this.movies);
                 });
 
                 axios.get('https://api.themoviedb.org/3/search/tv', {
