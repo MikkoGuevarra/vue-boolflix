@@ -7,7 +7,8 @@ var app =  new Vue ({
         availableFlags: ['de', 'en', 'es', 'fr', 'it', 'ja'],
         totStars: 5,
         movieTrending: [],
-        showTrending: []
+        showTrending: [],
+        casts: []
     },
     methods: {
         btnEnter() {
@@ -21,6 +22,19 @@ var app =  new Vue ({
                 }).then(result => {
                     this.movies = result.data.results;
                     console.log(this.movies);
+                    // console.log(this.getCast(340102, this.movies))
+                    this.movies.forEach((movie) => {
+                        axios.get('https://api.themoviedb.org/3/movie/' + movie.id + '/credits', {
+                            params: {
+                                api_key: 'c3629f71ee7deef7be9c4792c3632882'
+                            }
+                        }).then(rex => {
+                            this.casts = rex.data.cast.slice(0, 5)
+                            console.log(this.casts);
+                        });
+
+                    });
+
                 });
 
                 axios.get('https://api.themoviedb.org/3/search/tv', {
@@ -32,7 +46,7 @@ var app =  new Vue ({
                     this.shows = result.data.results;
                 });
                 this.searchInput= "";
-                console.log(this.movieTrending);
+
             }
         },
         getImg(path) {
@@ -55,7 +69,7 @@ var app =  new Vue ({
             }
         }).then(result => {
             this.movieTrending = result.data.results;
-            console.log(this.movieTrending);
+            // console.log(this.movieTrending);
         });
 
         axios.get('https://api.themoviedb.org/3/trending/tv/week', {

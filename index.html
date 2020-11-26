@@ -34,7 +34,9 @@
                         </div>
                         <div class="description">
                             <h3>{{trending.title}}</h3>
-                            <p>{{trending.original_title}}</p>
+                            <p>
+                                {{trending.original_title}}
+                            </p>
                             <p>
                                 <img v-if="availableFlags.includes(trending.original_language)" class="flags" :src="'flags/' + trending.original_language + '.png'" :alt="trending.original_language">
                                 <span v-else="">{{trending.original_language}}</span>
@@ -66,7 +68,8 @@
                                     <i v-for="i in (totStars - getStars(movie.vote_average ))" class="far fa-star"></i>
                                 </span>
                             </p>
-                            <h5>{{movie.overview}}</h5>
+                            <p v-for="cast in casts">{{cast.name}}</p>
+                            <!-- <h5>{{movie.overview}}</h5> -->
                         </div>
                     </div>
                 </div>
