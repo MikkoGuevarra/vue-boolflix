@@ -58,7 +58,7 @@ var app =  new Vue ({
             // console.log(this.movieTrending);
         });
 
-        axios.get('https://api.themoviedb.org/3/trending/show/week', {
+        axios.get('https://api.themoviedb.org/3/trending/tv/week', {
             params: {
                 api_key: 'c3629f71ee7deef7be9c4792c3632882'
             }
