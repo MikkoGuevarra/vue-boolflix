@@ -46,7 +46,9 @@ header {
     background-color: black;
     margin-bottom: 30px;
 }
-
+li{
+    display: inline-block;
+}
 h3 {
     margin-bottom: 10px;
 }
