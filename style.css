@@ -102,7 +102,7 @@ h5 {
 
 /* +++++MOVIE CONTAINER+++++ */
 
-.movie-container, .show-container {
+.movie-container {
     padding: 20px;
     display: flex;
     overflow: auto;
@@ -110,11 +110,11 @@ h5 {
     /* flex-wrap: wrap; */
 }
 
-.movie, .shows {
-    flex-basis: 300px;
+.movie {
+    flex-basis: 400px;
     flex-grow: 0;
     flex-shrink: 0;
-    height: 400px;
+    height: 500px;
     /* padding: 50px 10px; */
     margin: 10px 10px;
     border-radius: 15px;
@@ -151,14 +151,10 @@ h5 {
     display: none;
 }
 
-.series h2 {
-    margin-top: 20px;
-}
-
-.movie:hover .img-cover, .shows:hover .img-cover {
+.movie:hover .img-cover {
     opacity: 30%;
 }
 
-.movie:hover .description, .shows:hover .description {
+.movie:hover .description {
     display: block;
 }
