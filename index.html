@@ -45,7 +45,10 @@
                                     <i v-for="i in (totStars - getStars(movie.vote_average ))" class="far fa-star"></i>
                                 </span>
                             </p>
-                            <p v-for="act in movie.cast">{{act.name}}</p>
+                            <ul>Cast:
+                                <li v-for="act in movie.cast">{{act.name}}</li>
+
+                            </ul>
                             <h5>{{movie.overview}}</h5>
                         </div>
                     </div>
