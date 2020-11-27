@@ -22,19 +22,18 @@ var app =  new Vue ({
                     }
                 }).then(result => {
                     this.movies = this.movies.concat(result.data.results);
-                    console.log(this.movies);
+                    this.movies.forEach((movie) => {
+                        axios.get('https://api.themoviedb.org/3/movie/' + movie.id + '/credits', {
+                            params: {
+                                api_key: 'c3629f71ee7deef7be9c4792c3632882'
+                            }
+                        }).then(rex => {
+                            Vue.set = (movie, 'cast', rex.data.cast.slice(0, 5))
+                            console.log(Vue.set);
+                        });
+                    });
                     // console.log(this.getCast(340102, this.movies))
-                    // this.movies.forEach((movie) => {
-                    //     axios.get('https://api.themoviedb.org/3/movie/' + movie.id + '/credits', {
-                    //         params: {
-                    //             api_key: 'c3629f71ee7deef7be9c4792c3632882'
-                    //         }
-                    //     }).then(rex => {
-                    //         movie['cast'] = rex.data.cast.slice(0, 5)
-                    //         // console.log(movie);
-                    //     });
-                    // });
-                    console.log(this.movies);
+
                 });
 
                 axios.get('https://api.themoviedb.org/3/search/tv', {
@@ -44,6 +43,16 @@ var app =  new Vue ({
                     }
                 }).then(result => {
                     this.movies = this.movies.concat(result.data.results);
+                    // this.movies.forEach((movie) => {
+                    //     axios.get('https://api.themoviedb.org/3/tv/' + movie.id + '/credits', {
+                    //         params: {
+                    //             api_key: 'c3629f71ee7deef7be9c4792c3632882'
+                    //         }
+                    //     }).then(rex => {
+                    //         Vue.set = (movie, 'cast', rex.data.cast.slice(0, 5))
+                    //         console.log(movie);
+                    //     });
+                    // });
                 });
                 this.searchInput= "";
 
