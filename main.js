@@ -20,7 +20,7 @@ var app =  new Vue ({
                     }
                 }).then(result => {
                     this.movies = result.data.results;
-                    console.log(this.movies);
+                    // console.log(this.movies);
                     // console.log(this.getCast(340102, this.movies))
                     this.movies.forEach((movie) => {
                         axios.get('https://api.themoviedb.org/3/movie/' + movie.id + '/credits', {
@@ -29,10 +29,10 @@ var app =  new Vue ({
                             }
                         }).then(rex => {
                             movie['cast'] = rex.data.cast.slice(0, 5)
+                            console.log(movie);
                         });
-
                     });
-                    console.log(this.movies);
+                    // console.log(this.movies);
                 });
 
                 axios.get('https://api.themoviedb.org/3/search/tv', {
