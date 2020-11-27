@@ -25,17 +25,41 @@
 
             </header>
             <section class="movies">
-                <h2></h2>
+                <h2>Movies</h2>
                 <div class="movie-container">
-                    <div class="movie" v-for="movie in totalArray">
+                    <!-- this container will show on the opening page or when no search -->
+                    <div v-show="movies.length == 0" v-for="trending in movieTrending" class="movie">
+                        <div class="cover">
+                            <img class="img-cover" :src="getImg(trending.poster_path)" alt="">
+                        </div>
+                        <div class="description">
+                            <h3>{{trending.title}}</h3>
+                            <p>
+                                {{trending.original_title}}
+                            </p>
+                            <p>
+                                <img v-if="availableFlags.includes(trending.original_language)" class="flags" :src="'flags/' + trending.original_language + '.png'" :alt="trending.original_language">
+                                <span v-else="">{{trending.original_language}}</span>
+                            </p>
+                            <p>
+                                <span>
+                                    <i  v-for="star in  getStars(trending.vote_average)" class="fas fa-star colored"></i>
+                                    <i v-for="i in (totStars - getStars(trending.vote_average ))" class="far fa-star"></i>
+                                </span>
+                            </p>
+                            <h5>{{trending.overview}}</h5>
+                        </div>
+                    </div>
+                    <!-- if searching trending container will hide and show you search -->
+                    <div v-show="movies.length != 0" class="movie" v-for="movie in movies">
                         <div class="cover">
                             <img class="img-cover" :src="getImg(movie.poster_path)" alt="">
                         </div>
                         <div class="description">
-                            <h3>{{movie.title ? movie.title : movie.name}}</h3>
-                            <p>{{movie.original_title ? movie.original_title : movie.original_name}}</p>
+                            <h3>{{movie.title}}</h3>
+                            <p>{{movie.original_title}}</p>
                             <p>
-                                <img v-if="availableFlags.includes(movie.original_language)" class="flags" :src="'../flags/' + movie.original_language + '.png'" :alt="movie.original_language">
+                                <img v-if="availableFlags.includes(movie.original_language)" class="flags" :src="'flags/' + movie.original_language + '.png'" :alt="movie.original_language">
                                 <span v-else="">{{movie.original_language}}</span>
                             </p>
                             <p>
@@ -44,11 +68,61 @@
                                     <i v-for="i in (totStars - getStars(movie.vote_average ))" class="far fa-star"></i>
                                 </span>
                             </p>
+                            <p v-for="act in movie.cast">{{act.name}}</p>
                             <h5>{{movie.overview}}</h5>
                         </div>
                     </div>
                 </div>
             </section>
+            <section class="series">
+                <h2>Tv Shows</h2>
+                <div class="show-container">
+                    <!-- this container will show on the opening page or when no search -->
+                    <div v-show="shows.length == 0" v-for="trending in showTrending" class="shows">
+                        <div class="cover">
+                            <img class="img-cover" :src="getImg(trending.poster_path)" alt="">
+                        </div>
+                        <div class="description">
+                            <h3>{{trending.name}}</h3>
+                            <p>{{trending.original_name}}</p>
+                            <p>
+                                <img v-if="availableFlags.includes(trending.original_language)" class="flags" :src="'flags/' + trending.original_language + '.png'" :alt="trending.original_language">
+                                <span v-else="">{{trending.original_language}}</span>
+                            </p>
+                            <p>
+                                <span>
+                                    <i  v-for="star in  getStars(trending.vote_average)" class="fas fa-star colored"></i>
+                                    <i v-for="i in (totStars - getStars(trending.vote_average ))" class="far fa-star"></i>
+                                </span>
+                            </p>
+                            <h5>{{trending.overview}}</h5>
+                        </div>
+                    </div>
+                    <!-- if searching trending container will hide and show you search -->
+                    <div class="shows" v-for="show in shows">
+                        <div class="cover">
+                            <img class="img-cover" :src="getImg(show.poster_path)" alt="">
+                        </div>
+                        <div class="description">
+                            <h3>{{show.name}}</h3>
+                            <p>{{show.original_name}}</p>
+                            <p>
+                                <img v-if="availableFlags.includes(show.original_language)" class="flags" :src="'flags/' + show.original_language + '.png'" :alt="show.original_language">
+                                <span v-else="">{{show.original_language}}</span>
+                            </p>
+                            <p>
+                                <span>
+                                    <i  v-for="star in  getStars(show.vote_average)" class="fas fa-star colored"></i>
+                                    <i v-for="i in (totStars - getStars(show.vote_average ))" class="far fa-star"></i>
+                                </span>
+                            </p>
+                            <h5>{{show.overview}}</h5>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
         </div>
         <script src="main.js" charset="utf-8"></script>
     </body>

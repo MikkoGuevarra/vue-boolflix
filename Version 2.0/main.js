@@ -2,22 +2,37 @@ var app =  new Vue ({
     el: '#root',
     data: {
         searchInput: '',
-        totalArray: [],
+        movies: [],
+        shows: [],
         availableFlags: ['de', 'en', 'es', 'fr', 'it', 'ja'],
         totStars: 5,
+        movieTrending: [],
+        showTrending: []
     },
     methods: {
         btnEnter() {
             if (this.searchInput.trim() != '') {
-                this.totalArray= [];
+                this.movieTrending=[];
                 axios.get('https://api.themoviedb.org/3/search/movie', {
                     params: {
                         api_key: 'c3629f71ee7deef7be9c4792c3632882',
                         query: this.searchInput
                     }
                 }).then(result => {
+                    this.movies = result.data.results;
                     // console.log(this.movies);
-                    this.totalArray = this.totalArray.concat(result.data.results);
+                    // console.log(this.getCast(340102, this.movies))
+                    this.movies.forEach((movie) => {
+                        axios.get('https://api.themoviedb.org/3/movie/' + movie.id + '/credits', {
+                            params: {
+                                api_key: 'c3629f71ee7deef7be9c4792c3632882'
+                            }
+                        }).then(rex => {
+                            movie['cast'] = rex.data.cast.slice(0, 5)
+                            console.log(movie);
+                        });
+                    });
+                    // console.log(this.movies);
                 });
 
                 axios.get('https://api.themoviedb.org/3/search/tv', {
@@ -26,14 +41,14 @@ var app =  new Vue ({
                         query: this.searchInput
                     }
                 }).then(result => {
-                    this.totalArray = this.totalArray.concat(result.data.results);
-                    console.log(this.totalArray);
+                    this.shows = result.data.results;
                 });
                 this.searchInput= "";
+
             }
         },
         getImg(path) {
-            let url = 'imgs/ntflx.jpg';
+            let url = 'flags/ntflx.jpg';
             if (path != null) {
                  // url = 'flags/ntflx.jpg';
                  url = 'https://image.tmdb.org/t/p/' + 'w342' + path;
@@ -51,9 +66,8 @@ var app =  new Vue ({
                 api_key: 'c3629f71ee7deef7be9c4792c3632882'
             }
         }).then(result => {
-            // this.movieTrending = result.data.results;
+            this.movieTrending = result.data.results;
             // console.log(this.movieTrending);
-            this.totalArray = this.totalArray.concat(result.data.results);
         });
 
         axios.get('https://api.themoviedb.org/3/trending/tv/week', {
@@ -61,9 +75,8 @@ var app =  new Vue ({
                 api_key: 'c3629f71ee7deef7be9c4792c3632882'
             }
         }).then(result => {
-            // this.showTrending = result.data.results;
-            // // console.log(this.showTrending);
-            this.totalArray = this.totalArray.concat(result.data.results);
+            this.showTrending = result.data.results;
+            // console.log(this.showTrending);
         });
 
     }

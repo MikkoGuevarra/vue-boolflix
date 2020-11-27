@@ -4,13 +4,13 @@
     padding: 0;
 }
 
-/* * {
+* {
   scrollbar-width: thin;
   scrollbar-color: black;
-} */
+}
 
 /* Works on Chrome/Edge/Safari */
-/* *::-webkit-scrollbar {
+*::-webkit-scrollbar {
   width: 12px;
 }
 *::-webkit-scrollbar-track {
@@ -20,7 +20,7 @@
   background-color: black;
   border-radius: 20px;
   border: 1px solid white;
-} */
+}
 
 body {
     background-color: #232427;
@@ -102,24 +102,25 @@ h5 {
 
 /* +++++MOVIE CONTAINER+++++ */
 
-.movie-container {
+.movie-container, .show-container {
     padding: 20px;
     display: flex;
     overflow: auto;
     margin: 0 10px;
-    flex-wrap: wrap;
-    justify-content: center;
     /* flex-wrap: wrap; */
 }
 
-.movie {
-    width: 300px;
+.movie, .shows {
+    flex-basis: 300px;
+    flex-grow: 0;
+    flex-shrink: 0;
     height: 400px;
     /* padding: 50px 10px; */
     margin: 10px 10px;
     border-radius: 15px;
     border: 1px solid white;
     position: relative;
+    overflow: auto;
 }
 
 .flags {
